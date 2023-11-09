@@ -1,0 +1,91 @@
+if game.PlaceId == 13772394625 then
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+    local Window = OrionLib:MakeWindow({Name = "Edward Newgate hub | blade ball", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+    -- Tạo tab
+    local Tab = Window:MakeTab({
+        Name = "Main",
+        Icon = "rbxassetid://907128504314144",
+        PremiumOnly = false
+    })
+
+    -- Slider
+    Tab:AddSlider({
+        Name = "Edward Newgate Hub",
+        Min = 1,
+        Max = 20,
+        Default = 5,
+        Color = Color3.fromRGB(255, 255, 255),
+        Increment = 1,
+        ValueName = "Edward Newgate Hub",
+        Slider = "Join the server discord: https://discord.gg/wMAAcxjFww",
+        Callback = function(Value)
+            print(Value)
+        end
+    })
+
+    -- Tạo hàm autoParry
+    local function autoParry()
+        while _G.autoParry do
+            game:GetService("ReplicatedStorage").autoParry:FireServer(0.625, CFrame.new(-226.292496, 125.230469, -172.585785, -0.922764897, 0.0762160942, -0.37775147, 7.4505815e-9, 0.980247021, 0.197777078, 0.385363609, 0.182501748, -0.904537439), {
+                ["DOGGIEFANDANI7474"] = true,
+                ["shaquira30900"] = true,
+                ["sasha_top0133"] = true,
+                ["dhhteheh7"] = true,
+                ["sheseedsddddddd"] = true,
+                ["xddd45max"] = true,
+                ["melody_4094"] = true,
+                ["dae_abdulmomin"] = true,
+                ["idieoeoe727"] = true,
+                ["GAMAL_JR76"] = true,
+                ["lolacielko"] = true,
+            }, {496, 66})
+        end
+    end
+
+    -- Tạo hàm autoSpam
+    local function autoSpam()
+        while _G.autoSpam do
+            game:GetService("ReplicatedStorage").Remotes.GetBPTeamsXPMultiplier:InvokeServer()
+            wait(0.01)
+        end
+    end
+
+    -- Tạo hàm autoBuySword
+    local function autoBuySword()
+        game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer("autoBuySword", true)
+    end
+
+    -- Toggle autoParry
+    Tab:AddToggle({
+        Name = "autoParry",
+        Default = false,
+        Callback = function(Value)
+            _G.autoParry = Value
+            autoParry()
+        end
+    })
+
+    -- Toggle autoSpam
+    Tab:AddToggle({
+        Name = "autoSpam",
+        Default = false,
+        Callback = function(Value)
+            _G.autoSpam = Value
+            autoSpam()
+        end
+    })
+
+    -- Toggle autoBuySword
+    Tab:AddToggle({
+        Name = "autoBuySword",
+        Default = false,
+        Callback = function(Value)
+            _G.autoBuySword = Value
+            autoBuySword()
+        end
+    })
+
+    -- Khởi động OrionLib
+    OrionLib:Init()
+end
